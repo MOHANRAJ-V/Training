@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'Github_credentials', url: 'https://github.com/MOHANRAJ-V/Training.git']])
+            }
+        }
+        stage('Terraform init') {
+            steps {
+                sh 'terraform init'
+            }
+        stage('Terraform format') {
+            steps {
+                sh 'terraform fmt'
+            }
+        stage('Terraform validate ') {
+            steps {
+                sh 'terraform validate'
+            }
+        }
+        stage('Apply') {
+            steps {
+                sh 'terraform apply'
+            }
+        }
+    }
+}
