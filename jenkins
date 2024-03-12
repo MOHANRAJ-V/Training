@@ -11,10 +11,12 @@ pipeline {
             steps {
                 sh 'terraform init'
             }
+        }    
         stage('Terraform format') {
             steps {
                 sh 'terraform fmt'
             }
+        }
         stage('Terraform validate ') {
             steps {
                 sh 'terraform validate'
