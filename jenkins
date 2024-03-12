@@ -23,5 +23,9 @@ pipeline {
                 sh 'terraform apply'
             }
         }
+        stage('Approve') {
+             steps {
+                sh 'Yes'
+            }
     }
 }
