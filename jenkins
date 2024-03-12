@@ -15,33 +15,7 @@ pipeline {
         }
         stage('Terraform validate ') {
             steps {
-                sh 'terraform validate'pipeline {
-    agent any
-
-    stages {
-        
-        stage('Terraform init') {
-            steps {
-                sh 'terraform init'
-            }
-        }    
-        stage('Terraform format') {
-            steps {
-                sh 'terraform fmt'
-            }
-        }
-        stage('Terraform validate ') {
-            steps {
                 sh 'terraform validate'
-            }
-        }
-        stage('Apply') {
-            steps {
-                sh 'terraform apply -y'
-            }
-        }
-    }
-}
             }
         }
         stage('Apply') {
