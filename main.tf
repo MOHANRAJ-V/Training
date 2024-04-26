@@ -19,7 +19,7 @@ resource "aws_instance" "jenkins-ec2" {
   ami           = "ami-00381a880aa48c6c6"
   instance_type = "t3.micro" 
   key_name      = "Tesing"
-  user_data     ||= file(install_jenkins.sh)
+  user_data     = file(install_jenkins.sh)
 
   tags = {
     Name = "ExampleJenkinsInstance"
